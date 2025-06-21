@@ -1,0 +1,76 @@
+// Script para el temporizador de cuenta regresiva
+// IMPORTANTE: Define la fecha objetivo FUERA de la función para que no se resetee con cada segundo.
+const targetDate = new Date(); // Obtiene la fecha y hora actual al cargar la página
+targetDate.setDate(targetDate.getDate() + 3); // Suma 3 días a la fecha actual para la duración de la oferta
+
+// Formatea la fecha para mostrarla en el mensaje de los bonos (ej: 18 de junio de 2025)
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+const formattedEndDate = targetDate.toLocaleDateString('es-ES', options);
+
+// Obtener el elemento donde se mostrará la fecha de finalización
+const endDateElement = document.getElementById('endDate');
+if (endDateElement) { // Asegúrate de que el elemento exista antes de intentar modificarlo
+    endDateElement.textContent = formattedEndDate;
+}
+
+
+function updateTimer() {
+    const now = new Date(); // Obtiene la fecha y hora actual en cada ejecución
+    
+    const diff = targetDate - now; // Diferencia en milisegundos
+
+    // Si la cuenta regresiva termina, oculta el temporizador o muestra un mensaje
+    if (diff < 0) {
+        // Asegura que todos los contadores se muestren como "00"
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+
+        document.getElementById('days2').textContent = '00';
+        document.getElementById('hours2').textContent = '00';
+        document.getElementById('minutes2').textContent = '00';
+        document.getElementById('seconds2').textContent = '00';
+
+        // ACTUALIZACIÓN PARA EL TERCER CONTADOR (NUEVOS IDs)
+        document.getElementById('days3').textContent = '00';
+        document.getElementById('hours3').textContent = '00';
+        document.getElementById('minutes3').textContent = '00';
+        document.getElementById('seconds3').textContent = '00';
+
+        // Opcional: Puedes cambiar el mensaje de la oferta si la oferta expira
+        if (endDateElement) {
+             endDateElement.textContent = "¡La oferta ha expirado!";
+             endDateElement.style.color = "red"; // Un pequeño extra para resaltar
+        }
+        return; // Detiene la función
+    }
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Actualiza el primer temporizador
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    
+    // Actualiza el segundo temporizador
+    document.getElementById('days2').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours2').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes2').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds2').textContent = seconds.toString().padStart(2, '0');
+
+    // ACTUALIZACIÓN PARA EL TERCER CONTADOR (NUEVOS IDs)
+    document.getElementById('days3').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours3').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes3').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds3').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Actualiza el temporizador cada segundo (1000 milisegundos)
+setInterval(updateTimer, 1000);
+// Llama a la función una vez inmediatamente al cargar la página para evitar el retraso inicial
+updateTimer();

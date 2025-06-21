@@ -1,0 +1,311 @@
+/* ESTILOS GENERALES Y RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #191C1F; /* Color principal del texto oscuro */
+    line-height: 1.5;
+    background-color: #f2f2f2; /* Un fondo general ligeramente gris para separar visualmente */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* SECCIONES: Colores de fondo para diferenciar el contenido */
+.section {
+    padding: 60px 0;
+    width: 100%;
+}
+
+.section-dark {
+    background-color: #1A2426; /* Fondo oscuro */
+    color: white;
+}
+
+.section-light {
+    background-color: #FFFFFF; /* Fondo claro */
+    color: #191C1F; /* Texto oscuro sobre fondo claro */
+}
+
+.section-blue {
+    background-color: #14133A; /* Fondo azul oscuro */
+    color: white;
+}
+
+.section-bonus {
+    background-color: #f8f9fa; /* Fondo gris claro para la sección de bonos */
+    border-top: 3px dashed #FFC107; /* Borde superior amarillo */
+    border-bottom: 3px dashed #FFC107; /* Borde inferior amarillo */
+    color: #191C1F; /* Asegura que el texto general de bonos sea oscuro */
+}
+
+/* LAYOUT: Filas y Columnas para diseño flexible */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px; /* Compensa el padding de las columnas */
+}
+
+.column {
+    flex: 1; /* Permite que las columnas se estiren */
+    padding: 15px;
+    min-width: 300px; /* Asegura que las columnas se apilen en pantallas pequeñas */
+}
+
+/* TIPOGRAFÍA: Estilos para diferentes niveles de encabezados y párrafos */
+.heading-large {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.heading-medium {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.heading-small {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.paragraph {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-highlight {
+    color: #191C1F; /* Color oscuro para asegurar legibilidad */
+    font-weight: bold;
+}
+
+/* IMÁGENES */
+.image-container {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block; /* Elimina espacio extra debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen si es más pequeña que su contenedor */
+}
+
+/* BOTONES DE LLAMADA A LA ACCIÓN (CTA) */
+.btn {
+    display: block; /* Botón a ancho completo por defecto en móvil */
+    width: fit-content; /* Se ajusta al contenido en pantallas grandes */
+    margin: 20px auto; /* Centra el botón */
+    padding: 16px 32px;
+    background: #FFC107; /* Color principal del botón */
+    color: #000000; /* Color del texto del botón */
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #95E914; /* Color de fondo al pasar el ratón (verde brillante) */
+    color: #000000; /* Color del texto al pasar el ratón */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* TEMPORIZADOR DE CUENTA REGRESIVA */
+.timer {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 30px 0;
+    flex-wrap: wrap; /* Permite que los ítems del temporizador se envuelvan */
+}
+
+.timer-item {
+    background: #191C1F;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.timer-number {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.timer-label {
+    font-size: 16px;
+}
+
+/* GRUPOS DE ELEMENTOS (Ej. Beneficios) */
+.feature-group {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ECECFB;
+    margin-right: 20px;
+    object-fit: cover; /* Asegura que la imagen del icono se vea bien */
+}
+
+.feature-text {
+    flex: 1;
+}
+
+/* BONOS: Estilos específicos para las tarjetas de bono */
+.bonus-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.bonus-card {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid #FFC107; /* Borde izquierdo de color amarillo */
+    transition: all 0.3s ease;
+    height: 100%; /* Asegura que todas las tarjetas de bono tengan la misma altura */
+    display: flex; /* Permite controlar el layout interno si es necesario */
+    flex-direction: column; /* Coloca elementos en columna */
+}
+
+.bonus-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.bonus-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.bonus-value {
+    font-size: 20px;
+    color: #14133A; /* Azul oscuro para el valor, mucho mejor contraste */
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.bonus-cta {
+    font-size: 16px;
+    font-weight: bold;
+    color: #14133A; /* Texto de CTA del bono en azul oscuro */
+    margin-top: auto; /* Empuja el CTA al final de la tarjeta */
+    padding-top: 15px;
+    border-top: 2px dashed #eee;
+}
+
+/* RESPONSIVE DESIGN: Adaptación a diferentes tamaños de pantalla */
+@media (max-width: 1023px) {
+    .heading-large {
+        font-size: 32px;
+    }
+    
+    .heading-medium {
+        font-size: 28px;
+    }
+    
+    .timer-item {
+        min-width: 80px;
+    }
+    
+    .timer-number {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 833px) {
+    .column {
+        flex: 100%; /* Las columnas ocupan todo el ancho */
+    }
+    
+    .heading-large {
+        font-size: 28px; /* Ajuste para móviles */
+    }
+    
+    .heading-medium {
+        font-size: 24px; /* Ajuste para móviles */
+    }
+    
+    .paragraph {
+        font-size: 16px;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        font-size: 16px;
+        max-width: 100%; /* Asegura que el botón se ajuste al ancho de pantalla */
+    }
+    
+    .timer {
+        gap: 8px;
+    }
+    
+    .timer-item {
+        padding: 8px;
+        min-height: 52px;
+        min-width: 60px;
+    }
+    
+    .timer-number {
+        font-size: 24px;
+    }
+    
+    .timer-label {
+        font-size: 12px;
+    }
+    
+    .feature-group {
+        flex-direction: column; /* Icono y texto se apilan verticalmente */
+        text-align: center;
+    }
+    
+    .feature-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .bonus-card {
+        padding: 20px;
+    }
+    /* Ajustes para testimonios en móvil */
+    .section-dark .image-container img {
+        height: auto !important; /* Anula el height fijo para adaptarse mejor en móvil */
+        max-height: 250px; /* Limita la altura para evitar imágenes muy largas */
+    }
+}
